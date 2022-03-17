@@ -9,10 +9,15 @@ module Types
     field :payment_count, Integer, null: false
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
-
+    field :successful_payment, [Types::PaymentType], String, null: false
+          
 
     def payment_count
       object.payments.size
+    end
+
+    def successful_payment
+      object.payments.successful
     end
   end
 end

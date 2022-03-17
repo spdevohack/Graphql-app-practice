@@ -20,6 +20,14 @@ module Types
       Order.all
     end
 
+    field :order, Types::OrderType, null: false do 
+      argument :id, ID, required: true
+    end
+
+    def order(id)
+      Order.find_by(id)
+    end
+
     field :all_payments, [Types::PaymentType], null: false
 
     def all_payments
